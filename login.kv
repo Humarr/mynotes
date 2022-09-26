@@ -1,0 +1,93 @@
+#: import gch kivy.utils.get_color_from_hex
+
+#: set btn_color gch("b90000")
+#: set text_color gch("000000")
+#: set bg_color gch("ffffff")
+
+
+<Login>
+    MDFloatLayout:
+        Image:
+            source: "login.png"
+            allow_stretch: True
+            size_hint_x: .81
+            pos_hint: {'center_x': 0.5,'center_y': 0.79}
+            halign: "center"
+        MDLabel:
+            text: "Login"
+            theme_text_color: "Custom"
+            text_color: text_color
+            font_size:"40sp"
+            font_name: 'Roboto-Bold'
+            pos_hint: {'center_y': 0.54}
+            halign: "center"
+        MDFloatLayout:
+            md_bg_color: btn_color
+            size_hint_y: .45
+            radius: [30, 0, 0, 0]
+
+            MDTextField:
+                id: email
+                hint_text: "email"
+                current_hint_text_color: bg_color
+                current_hint_text_font_size: "30sp"
+                line_color_focus: bg_color
+                line_color_normal: bg_color
+                size_hint_x: .84
+                pos_hint: {'center_x': 0.5,'center_y': 0.69}
+                icon_right: "email"
+                icon_right_color: bg_color
+
+            MDTextField:
+                id: password
+                hint_text: "password"
+                current_hint_text_color: bg_color
+                current_hint_text_font_size: "30sp"
+                line_color_focus: bg_color
+                line_color_normal: bg_color
+                size_hint_x: .84
+                pos_hint: {'center_x': 0.5,'center_y': 0.49}
+                icon_right: "lock"
+                icon_right_color: bg_color
+                password: True
+            # MDSpinner:
+            #     size_hint: None, None
+            #     size: dp(46), dp(46)
+            #     pos_hint: {'center_x': .5, 'center_y': .7}
+            #     active: True if check.active else False
+            #     line_width: 3.0
+            #     color: bg_color
+            MDCheckbox:
+                id: check
+                size_hint: None, None
+                size: dp(1), dp(1)
+                # pos_hint: {'center_x': .001, 'center_y': .4}
+                active: False
+
+            MDFillRoundFlatButton:
+                text: '[color=#b90000]Login[/color]' if check.active == False else "[color=#b90000]Loading[/color]"
+                markup: True
+                pos_hint: {'center_x': 0.5,'center_y': 0.25}
+                md_bg_color: bg_color
+                size_hint_x: .99
+                font_size: "20sp"
+                font_name: "Roboto-Bold"
+                on_press:
+                    # check.active = True
+                    app.get_contacts()
+                    root.checkbox()
+
+            MDLabel:
+                text: "Not registered?"
+                theme_text_color: "Custom"
+                text_color: text_color
+                font_size:"15sp"
+                font_name: 'Roboto-Bold'
+                pos_hint: {'center_y': 0.078}
+                halign: "center"
+            MDFlatButton:
+                text: ' [color=#ffffff][u]Signup[/u][/color]'
+                pos_hint: {'center_x': 0.73,'center_y': 0.078}
+                font_name:"Roboto-Bold"
+                font_size: "15sp"
+                on_press: root.manager.current = "signup"

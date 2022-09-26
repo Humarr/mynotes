@@ -1,0 +1,60 @@
+#: import gch kivy.utils.get_color_from_hex
+
+#: set btn_color gch("b90000")
+#: set text_color gch("000000")
+#: set bg_color gch("ffffff")
+
+
+<ReaderCard>
+    id: docs
+    elevation:10
+    md_bg_color: bg_color
+    radius: [15,]
+    # size_hint_y: .08
+    # duration_long_touch: 0.1
+    text: root.page
+    theme_text_color: "Custom"
+    text_color: btn_color
+
+
+
+
+
+
+
+<DocScreen>
+    MDFloatLayout:
+        MDToolbar:
+            id: toolbar
+            title: "Title"
+            left_action_items: [["chevron-left", lambda x: root.goback()]]
+            pos_hint: {'top': 1,}
+            md_bg_color: btn_color
+        MDLabel:
+            text: "Documents"
+            theme_text_color: 'Custom'
+            text_color: btn_color
+            pos_hint: {'center_x': 0.13, 'center_y': 0.85}
+            halign: 'center'
+            font_size: '16sp'
+            bold: True
+            font_style: 'Body1'
+
+
+
+        ScrollView:
+            do_scroll_y: True
+            do_scroll_x: False
+            size_hint_y: .95
+            pos_hint: {'center_x': 0.5,'center_y':.35}
+            bar_width: 2
+
+            GridLayout:
+                # bg_color: btn_color
+                id: docs
+                cols: 1
+                height: self.minimum_height
+                row_default_height:'55dp'
+                size_hint_y: None
+                padding: '15dp','10dp'
+                spacing: '15dp','10dp'

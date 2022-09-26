@@ -1,0 +1,109 @@
+#: import gch kivy.utils.get_color_from_hex
+
+#: set btn_color gch("b90000")
+#: set text_color gch("000000")
+#: set bg_color gch("ffffff")
+
+
+<Signup>
+    MDFloatLayout:
+        md_bg_color: bg_color
+        Image:
+            source: "signup.png"
+            allow_stretch: True
+            size_hint_x: .81
+            pos_hint: {'center_x': 0.5,'center_y': 0.79}
+            halign: "center"
+        MDLabel:
+            text: "Sign Up"
+            theme_text_color: "Custom"
+            text_color: text_color
+            font_size:"40sp"
+            font_name: 'Roboto-Bold'
+            pos_hint: {'center_y': 0.6}
+            halign: "center"
+        MDLabel:
+            id: otp_label
+        MDFloatLayout:
+            md_bg_color: btn_color
+            size_hint_y: .55
+            radius: [30, 0, 0, 0]
+
+            MDTextField:
+                id: username
+                hint_text: "Username"
+                current_hint_text_color: bg_color
+                current_hint_text_font_size: "30sp"
+                line_color_focus: bg_color
+                line_color_normal: bg_color
+                size_hint_x: .84
+                pos_hint: {'center_x': 0.5,'center_y': 0.85}
+                icon_right: "account"
+                icon_right_color: bg_color
+
+            MDTextField:
+                id: email
+                hint_text: "email"
+                current_hint_text_color: bg_color
+                current_hint_text_font_size: "30sp"
+                line_color_focus: bg_color
+                line_color_normal: bg_color
+                size_hint_x: .84
+                pos_hint: {'center_x': 0.5,'center_y': 0.7}
+                icon_right: "email"
+                input_type: 'mail'
+                icon_right_color: bg_color
+            MDTextField:
+                id: whatsapp
+                hint_text: "Phone number"
+                current_hint_text_color: bg_color
+                current_hint_text_font_size: "30sp"
+                line_color_focus: bg_color
+                line_color_normal: bg_color
+                size_hint_x: .84
+                pos_hint: {'center_x': 0.5,'center_y': 0.55}
+                icon_right: "phone"
+                icon_right_color: bg_color
+                # input_type: "number"
+            MDTextField:
+                id: password
+                hint_text: "password"
+                current_hint_text_color: bg_color
+                current_hint_text_font_size: "30sp"
+                line_color_focus: bg_color
+                line_color_normal: bg_color
+                size_hint_x: .84
+                pos_hint: {'center_x': 0.5,'center_y': 0.4}
+                icon_right: "lock"
+                icon_right_color: bg_color
+
+            MDCheckbox:
+                id: check
+                size_hint: None, None
+                size: dp(1), dp(1)
+                # pos_hint: {'center_x': .001, 'center_y': .4}
+                active: False
+
+            MDFillRoundFlatButton:
+                text: '[color=#b90000]Continue[/color]' if check.active == False else "[color=#b90000]Processing...[/color]"
+                markup: True
+                pos_hint: {'center_x': 0.5,'center_y': 0.2}
+                md_bg_color: bg_color
+                size_hint_x: .99
+                font_size: "20sp"
+                font_name: "Roboto-Bold"
+                on_press: root.checkbox()
+            MDLabel:
+                text: "Already registered?"
+                theme_text_color: "Custom"
+                text_color: text_color
+                font_size:"15sp"
+                font_name: 'Roboto-Bold'
+                pos_hint: {'center_y': 0.078}
+                halign: "center"
+            MDFlatButton:
+                text: ' [color=#ffffff][u]Login[/u][/color]'
+                pos_hint: {'center_x': 0.74,'center_y': 0.078}
+                font_name:"Roboto-Bold"
+                font_size: "15sp"
+                on_press: root.manager.current = "login"

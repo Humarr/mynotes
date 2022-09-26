@@ -1,0 +1,102 @@
+#: import gch kivy.utils.get_color_from_hex
+
+#: set btn_color gch("b90000")
+#: set text_color gch("000000")
+#: set bg_color gch("ffffff")
+
+
+<Otp>
+    MDFloatLayout:
+        md_bg_color: bg_color
+        Image:
+            source: "otp.png"
+            allow_stretch: True
+            size_hint_x: .71
+            pos_hint: {'center_x': 0.5,'center_y': 0.84}
+            halign: "center"
+        MDIconButton:
+            icon: "chevron-left"
+            theme_text_color: "Custom"
+            text_color: btn_color
+            pos_hint: {'top': 1}
+            user_font_size: "40sp"
+            on_press: root.manager.current = "signup"
+        MDLabel:
+            text: "One More thing..."
+            theme_text_color: "Custom"
+            text_color: btn_color
+            font_size:"24sp"
+            font_name: 'Roboto-Bold'
+            pos_hint: {'center_y': 0.6}
+            # size_hint_x: .9
+            halign: "center"
+
+        MDLabel:
+            text: "A one-time-password has been sent to your email.\n Please enter the password in the spaces provied below to proceed."
+            theme_text_color: "Custom"
+            text_color: text_color
+            font_size:"15sp"
+            font_name: 'Roboto-Bold'
+            pos_hint: {'center_y': 0.5}
+            # size_hint_x: .9
+            halign: "center"
+
+        MDFloatLayout:
+            md_bg_color: bg_color
+            size_hint_y: .45
+            radius: [30, 0, 0, 0]
+
+            MDTextField:
+                id: otp1
+                line_color_focus: btn_color
+                line_color_normal: btn_color
+                size_hint_x: .07
+                pos_hint: {'center_x': 0.3,'center_y': 0.89}
+            MDTextField:
+                id: otp2
+                line_color_focus: btn_color
+                line_color_normal: btn_color
+                size_hint_x: .07
+                pos_hint: {'center_x': 0.4,'center_y': 0.89}
+
+            MDTextField:
+                id: otp3
+                line_color_focus: btn_color
+                line_color_normal: btn_color
+                size_hint_x: .07
+                pos_hint: {'center_x': 0.5,'center_y': 0.89}
+            MDTextField:
+                id: otp4
+                line_color_focus: btn_color
+                line_color_normal: btn_color
+                size_hint_x: .07
+                pos_hint: {'center_x': 0.6,'center_y': 0.89}
+            MDTextField:
+                id: otp5
+                line_color_focus: btn_color
+                line_color_normal: btn_color
+                size_hint_x: .07
+                pos_hint: {'center_x': 0.7,'center_y': 0.89}
+            MDTextField:
+                id: otp6
+                line_color_focus: btn_color
+                line_color_normal: btn_color
+                size_hint_x: .07
+                pos_hint: {'center_x': 0.8,'center_y': 0.89}
+
+            MDCheckbox:
+                id: check
+                size_hint: None, None
+                size: dp(1), dp(1)
+                # pos_hint: {'center_x': .001, 'center_y': .4}
+                active: False
+
+            MDFillRoundFlatButton:
+                text: '[color=#ffffff]Create Account[/color]' if check.active == False else "[color=#ffffff]Creating account[/color]"
+                markup: True
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                md_bg_color: btn_color
+                size_hint_x: .99
+                font_size: "20sp"
+                font_name: "Roboto-Bold"
+                on_press: root.checkbox()
